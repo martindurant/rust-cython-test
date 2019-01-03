@@ -22,8 +22,8 @@ def call_rust_upper(unicode s):
     return PyUnicode_InternFromString(my_upper(PyUnicode_AsUTF8String(s)))
 
 
-@cython.boundscheck(False) # turn off bounds-checking for entire function
-@cython.wraparound(False)  # turn off negative index wrapping for entire function
+@cython.boundscheck(False)
+@cython.wraparound(False)
 cdef do_array_upper(np.ndarray[np.int64_t, ndim=1] starts,
                     np.ndarray[np.int64_t, ndim=1] stops,
                     np.ndarray[np.uint8_t, ndim=1] content,
@@ -44,8 +44,8 @@ cdef do_array_upper(np.ndarray[np.int64_t, ndim=1] starts,
         memcpy((<void*> out.data) + start, <void *> uword, stop - start)
 
 
-@cython.boundscheck(False) # turn off bounds-checking for entire function
-@cython.wraparound(False)  # turn off negative index wrapping for entire function
+@cython.boundscheck(False)
+@cython.wraparound(False)
 cdef do_carray_upper(np.ndarray[np.int64_t, ndim=1] starts,
                      np.ndarray[np.int64_t, ndim=1] stops,
                      np.ndarray[np.uint8_t, ndim=1] content,
