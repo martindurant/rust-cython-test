@@ -1,5 +1,4 @@
 use std::ffi::CStr;
-use std::os::raw::c_char;
 
 static mut DATA: Option<Vec<String>> = None;
 
@@ -15,7 +14,7 @@ pub extern fn init() -> bool {
 }
 
 #[no_mangle]
-pub extern "C" fn my_upper(b: *const c_char) -> *const u8 {
+pub extern "C" fn my_upper(b: *const i8) -> *const u8 {
     let s = unsafe { CStr::from_ptr(b) };
     s.to_str().unwrap().to_uppercase().as_ptr()
 }

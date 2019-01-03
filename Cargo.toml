@@ -1,8 +1,8 @@
 [package]
-name = "rustcython_test"
+name = "rustcython_string"
 version = "0.1.0"
-authors = ["Joshua L. Adelman <joshua.adelman@gmail.com>"]
+authors = ["MD"]
 
 [lib]
-name = "rustcython_test"
+name = "rustcython_string"
 crate-type = ["dylib"]
