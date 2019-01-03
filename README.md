@@ -19,11 +19,11 @@ python setup.py build_ext --inplace
 
 Then launching IPython:
 
-```python
-In [1]: import cytest
+```
+>>> import cytest
 
-In [2]: cytest.call_rust_double(10.0)
-Out[2]: 20.0
+>>> cytest.call_rust_upper('hello')
+'HELLO'
 ```
 
 This example is obviously not very useful, but I wanted to demonstrate the capability.

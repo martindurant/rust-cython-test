@@ -2,19 +2,21 @@ from setuptools import setup, Extension, find_packages
 
 from Cython.Build import cythonize
 from Cython.Distutils import build_ext
+import numpy
 
 ext = Extension('cytest', 
-          sources=['cytest.pyx'],
-          libraries=['rustcython_test',],
-          library_dirs=['target/release',],
-          include_dirs=['.',]
+                sources=['cytest.pyx'],
+                libraries=['rustcython_test'],
+                library_dirs=['target/release'],
+                include_dirs=['.']
 )
 
-extensions = [ext,]
+extensions = [ext]
 
 setup(
-    name = "cytest",
-    ext_modules = cythonize(extensions),
+    name="cytest",
+    ext_modules=cythonize(extensions, annotate=True),
     cmdclass={'build_ext': build_ext},
+    include_dirs=[numpy.get_include()]
 )
 

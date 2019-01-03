@@ -3,4 +3,8 @@
 
 double rust_double(double x);
 
+const char *my_upper(char *b);
+
+int init();
+
 #endif

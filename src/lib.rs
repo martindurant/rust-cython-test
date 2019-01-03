@@ -1,9 +1,21 @@
+use std::ffi::CStr;
+use std::os::raw::c_char;
+
+static mut DATA: Option<Vec<String>> = None;
+
 #[no_mangle]
-pub extern fn rust_double(x: f64) -> f64 { 
-    x * 2.0
+pub extern fn init() -> bool {
+    unsafe {match DATA {
+        None => {
+            DATA = Some(Vec::new());
+            true
+        },
+        _ => false
+    }}
 }
 
-#[test]
-fn it_works() {
-    assert!(rust_double(3.0) == 6.0)
+#[no_mangle]
+pub extern "C" fn my_upper(b: *const c_char) -> *const u8 {
+    let s = unsafe { CStr::from_ptr(b) };
+    s.to_str().unwrap().to_uppercase().as_ptr()
 }
