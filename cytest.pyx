@@ -8,7 +8,7 @@ cimport numpy as np
 import cython
 
 
-cdef extern from "rlib.h":
+cdef extern:
     char *my_upper(char *b)
     int init()
 

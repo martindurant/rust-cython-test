@@ -1,7 +1,10 @@
-# rust-cython-test
+# rust-cython-string
+
 Code originally taken from [this earlier example](https://github.com/synapticarbors/rust-cython-test).
 
-Here is a simple example of calling a Rust string functions sing [Cython](http://cython.org/). 
+## Introduction
+
+Here is a simple example of calling a Rust string function using [Cython](http://cython.org/). 
 There is a simple function for one string, and two versions of arrayed calls.
 
 Basic instructions for running the example:
@@ -22,12 +25,6 @@ Then in python:
 This example is obviously not very useful, but I wanted to demonstrate the capability.
 
 ### Build details
-
-Include file:
-```
-const char *my_upper(char *b);
-int init();
-```
 
 Setup file:
 ```python
@@ -59,7 +56,6 @@ from cpython cimport PyUnicode_AsUTF8String, PyUnicode_InternFromString
 
 cdef extern from "rlib.h":
     char *my_upper(char *b)
-    int init()
 
 def call_rust_upper(unicode s):
     cdef unicode out
