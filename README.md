@@ -120,6 +120,8 @@ iterates over the offsets and uses cython to make pointers to pass to Rust. Data
 into another identical array using casting, and the whole loop shows no yellow in the cython annotation,
 i.e., no python calls at all. The function, to my surprise, works!
 
+![Annotation](https://raw.githubusercontent.com/martindurant/rust-cython-test/master/annot.png)
+
 Timing:
 ```python
 >>> arr = awkward.StringArray.fromiter(['hello', 'oi']*1000000)
