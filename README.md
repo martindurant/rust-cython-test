@@ -120,7 +120,7 @@ iterates over the offsets and uses cython to make pointers to pass to Rust. Data
 into another identical array using casting, and the whole loop shows no yellow in the cython annotation,
 i.e., no python calls at all. The function, to my surprise, works!
 
-![Annotation](https://raw.githubusercontent.com/martindurant/rust-cython-test/master/annot.png)
+![Annotation](https://raw.githubusercontent.com/martindurant/rust-cython-test/59686d0d6ea89c0f321a5113a19509984561d0eb/annot.pnghttps://raw.githubusercontent.com/martindurant/rust-cython-test/master/annot.png)
 
 Timing:
 ```python
