@@ -1,9 +1,11 @@
 import numba
 import numpy as np
+import sys
+sys.path.append('/Users/mdurant/code/awkward-1.0')
 import awkward1 as ak
 
 
-arr = ak.Array(['hi' * 10]*500000)
+arr = ak.Array(['hi' * 10]*10000)
 arr2 = arr.copy()
 
 
@@ -22,7 +24,7 @@ def _equal(cone, oone, ctwo, otwo):
     return out
 
 
-def equal(one, two):
+def equal(one, two):  # 280us
     cone = np.asarray(one.layout.content)
     oone = np.asarray(one.layout.offsets)
     ctwo = np.asarray(two.layout.content)
@@ -30,3 +32,4 @@ def equal(one, two):
     return ak.highlevel.Array(ak.layout.NumpyArray(_equal(cone, oone, ctwo, otwo)))
 
 
+arr == arr2  # 5ms
